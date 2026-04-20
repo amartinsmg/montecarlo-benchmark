@@ -1,0 +1,6 @@
+CompileFlags:
+  Add: [
+    "-fopenmp",
+    "-I/usr/lib/llvm-18/lib/clang/18/include",
+    "-Wno-unknown-pragmas",
+  ]
