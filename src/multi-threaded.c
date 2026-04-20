@@ -9,12 +9,13 @@ double montecarlo_threads(int64_t n) {
 
 #pragma omp parallel
   {
-    unsigned int seed = time(NULL) + omp_get_thread_num();
+    uint64_t seed = time(NULL) + omp_get_thread_num();
     int64_t partial_sum = 0;
+
+    float x, y;
 
 #pragma omp for schedule(static)
     for (int64_t i = 0; i < n; i++) {
-      float x, y;
       x = randomf(&seed);
       y = randomf(&seed);
       partial_sum += x * x + y * y <= 1 ? 1 : 0;
