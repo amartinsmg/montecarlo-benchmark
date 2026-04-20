@@ -29,8 +29,8 @@ double montecarlo_threads(int64_t n) {
 }
 
 int main(void) {
-  double pi = montecarlo_threads(1000000000);
-  printf("Pi = %.9lf\n", pi);
+  double pi = montecarlo_threads(1000000000000);
+  printf("Pi estimated = %.9lf\n", pi);
 
   return 0;
 }
