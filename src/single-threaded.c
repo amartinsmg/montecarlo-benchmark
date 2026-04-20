@@ -20,7 +20,7 @@ double montecarlo(int64_t n) {
 }
 
 int main(void) {
-  double pi = montecarlo(100000000000);
+  double pi = montecarlo(1000000000000);
   printf("Pi estimated = %.9lf\n", pi);
 
   return 0;
