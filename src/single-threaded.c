@@ -5,8 +5,10 @@
 
 double montecarlo(int64_t n) {
   int64_t count = 0;
+
   float x, y;
-  unsigned int seed = time(NULL);
+
+  uint64_t seed = time(NULL);
 
   for (int64_t i = 0; i < n; i++) {
     x = randomf(&seed);
