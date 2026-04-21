@@ -114,8 +114,8 @@ nvcc -O3 -Xcompiler -fopenmp src/main.cu -o build/benchmark
 | 1e9    | CPU (OpenMP)     | 3.141604     | 0.795 s    |
 | 1e9    | CUDA             | 3.141598     | 0.013 s    |
 | ------ | ---------------- | ------------ | ---------- |
-| 1e12   | CPU (Single)     | 3.141593     | 92m 20s    |
-| 1e12   | CPU (OpenMP)     | 3.141595     | 13m 40s    |
+| 1e12   | CPU (Single)     | 3.141593     | 92min 20s  |
+| 1e12   | CPU (OpenMP)     | 3.141595     | 13min 40s  |
 | 1e12   | CUDA             | 3.141596     | 9.023 s    |
 
 ---
