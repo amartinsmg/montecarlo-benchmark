@@ -8,7 +8,7 @@
 typedef double (*bench_fn_cuda)(int64_t);
 
 static void run_bench_cuda(const char *name, bench_fn_cuda f, int64_t N,
-                           uint32_t RUNS) {
+                           uint32_t runs) {
   printf("\n%s\n", name);
 
   double total_runtime = 0;
@@ -23,7 +23,7 @@ static void run_bench_cuda(const char *name, bench_fn_cuda f, int64_t N,
   cudaEventCreate(&start);
   cudaEventCreate(&stop);
 
-  for (int i = 0; i < RUNS; i++) {
+  for (int i = 0; i < runs; i++) {
     cudaEventRecord(start);
 
     sink = f(N);
@@ -40,7 +40,7 @@ static void run_bench_cuda(const char *name, bench_fn_cuda f, int64_t N,
   cudaEventDestroy(start);
   cudaEventDestroy(stop);
 
-  double mean = total_runtime / RUNS;
+  double mean = total_runtime / runs;
 
   printf("Time = %.3f s\n", mean);
 }

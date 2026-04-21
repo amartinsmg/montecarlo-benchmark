@@ -13,7 +13,7 @@ static inline double now() {
   return t.tv_sec + t.tv_nsec * 1e-9;
 }
 
-static void run_bench(const char *name, bench_fn f, int64_t N, uint32_t RUNS) {
+static void run_bench(const char *name, bench_fn f, int64_t N, uint32_t runs) {
   printf("\n%s\n", name);
 
   double total_runtime = 0;
@@ -23,14 +23,14 @@ static void run_bench(const char *name, bench_fn f, int64_t N, uint32_t RUNS) {
 
   volatile double sink;
 
-  for (int i = 0; i < RUNS; i++) {
+  for (int i = 0; i < runs; i++) {
     double start = now();
     sink = f(N);
     double end = now();
     total_runtime += end - start;
   }
 
-  double mean = total_runtime / RUNS;
+  double mean = total_runtime / runs;
 
   printf("Time = %.3f s\n", mean);
 }
