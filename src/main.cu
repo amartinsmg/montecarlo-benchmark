@@ -23,7 +23,7 @@ inline config_t parse_args(int argc, char **argv) {
     if (strncmp(argv[i], "--n=", 4) == 0) {
       cfg.N = parse_int64(argv[i] + 4);
     } else if (strncmp(argv[i], "--runs=", 4) == 0) {
-      cfg.N = parse_uint32(argv[i] + 7);
+      cfg.runs = parse_uint32(argv[i] + 7);
     } else {
       printf("Unknow argument: %s\n", argv[i]);
       exit(EXIT_FAILURE);
