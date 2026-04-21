@@ -1,7 +1,7 @@
 #ifndef RUN_BENCH_CUDA_CUH
 #define RUN_BENCH_CUDA_CUH
 
-#include <cuda_runtime_api.h>
+#include <cuda_runtime.h>
 #include <stdint.h>
 #include <stdio.h>
 
