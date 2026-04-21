@@ -2,10 +2,7 @@
 #define MONTECARLO_CUDA_CUH
 
 #include "randomf.h"
-#include <cuda_device_runtime_api.h>
 #include <cuda_runtime.h>
-#include <cuda_runtime_api.h>
-#include <driver_types.h>
 #include <stdint.h>
 
 __global__ static void kernel_montecarlo(int64_t *counts, int64_t N) {
