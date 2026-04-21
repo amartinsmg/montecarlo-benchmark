@@ -15,7 +15,7 @@ __device__ static inline float randomf(uint64_t *x) {
   return (float)(uint32_t)(z >> 32) / 4294967295.0f;
 }
 
-__global__ void kernel_montecarlo(int64_t *counts, int64_t n, uint64_t base_seed) {
+__global__ void kernel_montecarlo(int64_t *counts, int64_t N) {
   int idx = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = gridDim.x * blockDim.x;
 
@@ -24,7 +24,7 @@ __global__ void kernel_montecarlo(int64_t *counts, int64_t n, uint64_t base_seed
 
   float x, y;
 
-  for (int64_t i = 0; i < n; i += stride) {
+  for (int64_t i = 0; i < N; i += stride) {
     x = randomf(&seed);
     y = randomf(&seed);
     local_count += x * x + y * y <= 1 ? 1 : 0;
@@ -33,7 +33,7 @@ __global__ void kernel_montecarlo(int64_t *counts, int64_t n, uint64_t base_seed
   counts[idx] = local_count;
 }
 
-double montecarlo_cuda(int64_t n) {
+double montecarlo_cuda(int64_t N) {
   int64_t total = 0;
   int threads_per_block = 256;
   int device;
@@ -51,7 +51,7 @@ double montecarlo_cuda(int64_t n) {
   cudaMalloc((void **)&d_counts, size);
   cudaMemset(d_counts, 0, size);
 
-  kernel_montecarlo<<<blocks, threads_per_block>>>(d_counts, n);
+  kernel_montecarlo<<<blocks, threads_per_block>>>(d_counts, N);
 
   cudaMemcpy(h_counts, d_counts, size, cudaMemcpyHostToHost);
 
@@ -61,7 +61,7 @@ double montecarlo_cuda(int64_t n) {
   cudaFree(d_counts);
   free(h_counts);
 
-  return 4.0 * (double)total / (double)n;
+  return 4.0 * (double)total / (double)N;
 }
 
 int main(void) {
