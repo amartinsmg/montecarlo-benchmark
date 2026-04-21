@@ -1,9 +1,11 @@
+#ifndef MONTECARLO_CUDA_CUH
+#define MONTECARLO_CUDA_CUH
+
 #include <cuda_device_runtime_api.h>
 #include <cuda_runtime.h>
 #include <cuda_runtime_api.h>
 #include <driver_types.h>
 #include <stdint.h>
-#include <stdio.h>
 
 __device__ static inline float randomf(uint64_t *x) {
   *x += 0x9e3779b97f4a7c15ULL;
@@ -64,9 +66,4 @@ double montecarlo_cuda(int64_t N) {
   return 4.0 * (double)total / (double)N;
 }
 
-int main(void) {
-  double pi = montecarlo_cuda(1000000000000);
-  printf("Pi estimated = %.9lf\n", pi);
-
-  return 0;
-}
+#endif /* MONTECARLO_CUDA_CUH */
