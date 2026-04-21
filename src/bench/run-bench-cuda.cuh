@@ -42,7 +42,7 @@ static void run_bench_cuda(const char *name, bench_fn_cuda f, int64_t N,
 
   double mean = total_runtime / runs;
 
-  printf("Time = %.3f s\n", mean);
+  printf("Time: %.3f s\n", mean);
 }
 
 #endif /* RUN_BENCH_CUDA_CUH */

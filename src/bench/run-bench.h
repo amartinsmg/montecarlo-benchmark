@@ -32,7 +32,7 @@ static void run_bench(const char *name, bench_fn f, int64_t N, uint32_t runs) {
 
   double mean = total_runtime / runs;
 
-  printf("Time = %.3f s\n", mean);
+  printf("Time: %.3f s\n", mean);
 }
 
 #endif /* RUN_BENCH_H */
