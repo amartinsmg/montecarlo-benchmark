@@ -1,7 +1,9 @@
+#ifndef MONTECARLO_MT_H
+#define MONTECARLO_MT_H
+
 #include "randomf.h"
 #include <omp.h>
 #include <stdint.h>
-#include <stdio.h>
 
 double montecarlo_threads(int64_t N) {
   int64_t count = 0;
@@ -27,9 +29,5 @@ double montecarlo_threads(int64_t N) {
   return 4.0 * (double)count / (double)N;
 }
 
-int main(void) {
-  double pi = montecarlo_threads(1000000000000);
-  printf("Pi estimated = %.9lf\n", pi);
+#endif /* MONTECARLO_MT_H */
 
-  return 0;
-}
