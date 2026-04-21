@@ -1,6 +1,8 @@
+#ifndef MONTECARLO_H
+#define MONTECARLO_H
+
 #include "randomf.h"
 #include <stdint.h>
-#include <stdio.h>
 
 double montecarlo(int64_t N) {
   int64_t count = 0;
@@ -18,9 +20,4 @@ double montecarlo(int64_t N) {
   return 4.0 * (double)count / (double)N;
 }
 
-int main(void) {
-  double pi = montecarlo(1000000000000);
-  printf("Pi estimated = %.9lf\n", pi);
-
-  return 0;
-}
+#endif /* MONTECARLO_H */
