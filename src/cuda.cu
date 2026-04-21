@@ -19,7 +19,7 @@ __global__ void kernel_montecarlo(int64_t *counts, int64_t N) {
   int idx = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = gridDim.x * blockDim.x;
 
-  uint64_t seed = 123456789ULL + idx * 0x9e3779b97f4a7c15ULL;
+  uint64_t seed = 123456789ULL ^ idx * 0x9e3779b97f4a7c15ULL;
   int64_t local_count = 0;
 
   float x, y;
