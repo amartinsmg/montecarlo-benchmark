@@ -1,13 +1,7 @@
-all: cuda multi-threaded single-threaded
+all: benchmark
 
-cuda: dir
-	nvcc -O3 src/cuda.cu -o debug/cuda
-
-multi-threaded: dir
-	gcc -O3 src/multi-threaded.c -fopenmp -o debug/multi-threaded
-
-single-threaded: dir
-	gcc -O3 src/single-threaded.c -o debug/single-threaded
+benchmark: dir
+	nvcc -O3 -Xcompiler -fopenmp src/benchmark.cu -o debug/benchmark 
 
 dir:
 	mkdir -p debug
