@@ -1,10 +1,10 @@
 all: benchmark
 
 benchmark: dir
-	nvcc -O3 -Xcompiler -fopenmp src/benchmark.cu -o debug/benchmark 
+	nvcc -O3 -Xcompiler -fopenmp src/benchmark.cu -o build/benchmark 
 
 dir:
-	mkdir -p debug
+	mkdir -p build
 
 clean:
-	rm debug/*
+	rm build/*
