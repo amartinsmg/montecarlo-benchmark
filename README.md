@@ -104,7 +104,7 @@ nvcc -O3 -Xcompiler -fopenmp src/main.cu -o build/benchmark
 
 ## 📊 Results
 
-| N      | Implementation   | Pi Estimate  | Time (s)   |
+| N      | Implementation   | Pi Estimate  | Time       |
 | ------ | ---------------- | ------------ | ---------- |
 | 1e6    | CPU (Single)     | 3.140784     | 0.007 s    |
 | 1e6    | CPU (OpenMP)     | 3.140988     | 0.001 s    |
