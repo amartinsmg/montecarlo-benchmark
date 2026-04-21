@@ -1,7 +1,6 @@
 #include "randomf.h"
 #include <stdint.h>
 #include <stdio.h>
-#include <time.h>
 
 double montecarlo(int64_t n) {
   int64_t count = 0;
