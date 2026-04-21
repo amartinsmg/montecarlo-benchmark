@@ -4,7 +4,6 @@
 #include <driver_types.h>
 #include <stdint.h>
 #include <stdio.h>
-#include <time.h>
 
 __device__ static inline float randomf(uint64_t *x) {
   *x += 0x9e3779b97f4a7c15ULL;
@@ -16,11 +15,11 @@ __device__ static inline float randomf(uint64_t *x) {
   return (float)(uint32_t)(z >> 32) / 4294967295.0f;
 }
 
-__global__ void kernel_montecarlo(int64_t *counts, int64_t n) {
+__global__ void kernel_montecarlo(int64_t *counts, int64_t n, uint64_t base_seed) {
   int idx = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = gridDim.x * blockDim.x;
 
-  uint64_t seed = 1234 * idx;
+  uint64_t seed = 123456789ULL + idx * 0x9e3779b97f4a7c15ULL;
   int64_t local_count = 0;
 
   float x, y;
