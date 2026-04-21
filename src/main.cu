@@ -1,8 +1,8 @@
-#include "cuda.cuh"
-#include "multi-threaded.h"
-#include "run-bench-cuda.cuh"
-#include "run-bench.h"
-#include "single-threaded.h"
+#include "bench/run-bench-cuda.cuh"
+#include "bench/run-bench.h"
+#include "cpu/multi-threaded.h"
+#include "cpu/single-threaded.h"
+#include "cuda/cuda.cuh"
 
 #define N 1000000000LL
 #define RUNS 3U
