@@ -2,7 +2,7 @@
 #include "bench/run-bench.h"
 #include "cpu/multi-threaded.h"
 #include "cpu/single-threaded.h"
-#include "cuda/cuda.cuh"
+#include "cuda/montecarlo.cuh"
 
 #define N 1000000000LL
 #define RUNS 3U
