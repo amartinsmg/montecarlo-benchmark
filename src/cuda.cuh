@@ -1,23 +1,14 @@
 #ifndef MONTECARLO_CUDA_CUH
 #define MONTECARLO_CUDA_CUH
 
+#include "randomf.h"
 #include <cuda_device_runtime_api.h>
 #include <cuda_runtime.h>
 #include <cuda_runtime_api.h>
 #include <driver_types.h>
 #include <stdint.h>
 
-__device__ static inline float randomf(uint64_t *x) {
-  *x += 0x9e3779b97f4a7c15ULL;
-  uint64_t z = *x;
-  z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;
-  z = (z ^ (z >> 27)) * 0x94d049bb133111ebULL;
-  z = z ^ (z >> 31);
-
-  return (float)(uint32_t)(z >> 32) / 4294967295.0f;
-}
-
-__global__ void kernel_montecarlo(int64_t *counts, int64_t N) {
+__global__ static void kernel_montecarlo(int64_t *counts, int64_t N) {
   int idx = blockIdx.x * blockDim.x + threadIdx.x;
   int stride = gridDim.x * blockDim.x;
 
@@ -35,7 +26,7 @@ __global__ void kernel_montecarlo(int64_t *counts, int64_t N) {
   counts[idx] = local_count;
 }
 
-double montecarlo_cuda(int64_t N) {
+double static montecarlo_cuda(int64_t N) {
   int64_t total = 0;
   int threads_per_block = 256;
   int device;
