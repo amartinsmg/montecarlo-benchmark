@@ -1,4 +1,4 @@
-# Monte Carlo Benchmark
+# Monte Carlo Benchmark (CPU vs OpenMP vs CUDA)
 
 This project is a personal benchmarking study that compares the performance of a Monte Carlo simulation implemented in three different execution models:
 
