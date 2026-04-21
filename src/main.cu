@@ -3,7 +3,6 @@
 #include "cpu/multi-threaded.h"
 #include "cpu/single-threaded.h"
 #include "cuda/montecarlo.cuh"
-#include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,11 +12,11 @@ typedef struct {
   uint32_t runs;
 } config_t;
 
-int64_t parse_int64(const char *s) { return (int64_t)strtod(s, NULL); }
+inline int64_t parse_int64(const char *s) { return (int64_t)strtod(s, NULL); }
 
-uint32_t parse_uint32(const char *s) { return (uint32_t)atoi(s); }
+inline uint32_t parse_uint32(const char *s) { return (uint32_t)atoi(s); }
 
-config_t parse_args(int argc, char **argv) {
+inline config_t parse_args(int argc, char **argv) {
   config_t cfg = {.N = 1000000LL, .runs = 3U};
 
   for (int i = 1; i < argc; i++) {
