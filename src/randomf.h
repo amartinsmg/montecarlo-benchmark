@@ -1,9 +1,14 @@
-#ifndef RANDOM_F_H
-#define RANDOM_F_H
+#pragma once
 
 #include <stdint.h>
 
-static inline float randomf(uint64_t *x) {
+#ifdef __CUDACC__
+  #define HD __host__ __device__
+#else
+  #define HD
+#endif
+
+HD static inline float randomf(uint64_t *x) {
   *x += 0x9e3779b97f4a7c15ULL;
   uint64_t z = *x;
   z = (z ^ (z >> 30)) * 0xbf58476d1ce4e5b9ULL;
@@ -12,5 +17,3 @@ static inline float randomf(uint64_t *x) {
 
   return (float)(uint32_t)(z >> 32) / 4294967295.0f;
 }
-
-#endif /* RANDOM_F_H */
