@@ -9,7 +9,7 @@ double montecarlo_threads(int64_t n) {
 
 #pragma omp parallel
   {
-    uint64_t seed = time(NULL) + omp_get_thread_num();
+    uint64_t seed = 123456789ULL + omp_get_thread_num() * 0x9e3779b97f4a7c15ULL;
     int64_t partial_sum = 0;
 
     float x, y;

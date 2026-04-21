@@ -8,7 +8,7 @@ double montecarlo(int64_t n) {
 
   float x, y;
 
-  uint64_t seed = time(NULL);
+  uint64_t seed = 123456789ULL;
 
   for (int64_t i = 0; i < n; i++) {
     x = randomf(&seed);
