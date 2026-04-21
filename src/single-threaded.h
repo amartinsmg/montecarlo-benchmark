@@ -4,7 +4,7 @@
 #include "randomf.h"
 #include <stdint.h>
 
-double montecarlo(int64_t N) {
+static double montecarlo(int64_t N) {
   int64_t count = 0;
 
   float x, y;

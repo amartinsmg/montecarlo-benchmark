@@ -5,7 +5,7 @@
 #include <omp.h>
 #include <stdint.h>
 
-double montecarlo_threads(int64_t N) {
+static double montecarlo_threads(int64_t N) {
   int64_t count = 0;
 
 #pragma omp parallel
