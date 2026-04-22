@@ -23,7 +23,7 @@ double static montecarlo_cuda(int64_t N) {
 
   kernel_montecarlo<<<blocks, threads_per_block>>>(d_counts, N);
 
-  cudaMemcpy(h_counts, d_counts, size, cudaMemcpyHostToHost);
+  cudaMemcpy(h_counts, d_counts, size, cudaMemcpyDeviceToHost);
 
   for (int i = 0; i < total_threads; i++)
     total += h_counts[i];
